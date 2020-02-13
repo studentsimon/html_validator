@@ -9,16 +9,45 @@ def validate_html(html):
     >>> validate_html('<strong>example')
     False
     '''
+
     list1 = _extract_tags(html);
 
-    for i in list1:
-        tag1 = "<" + "/" + i[1:]
-        if tag1 in list1:
-            list1.remove(i)
-            list1.remove(tag1)
+    i = 0
+
+    while i < len(list1)-1:
+
+       
+        
+        tag0 = list1[i]
+        tag1 = "<" + "/" + tag0[1:]
+
+        if list1[i+1] != tag1:
+            tag0 = list1[i+1]
+            tag1 = "<" + "/" + tag0[1:]
+            i+=1
+            if tag0[1:2] == '/':
+                return False
+            
         else:
-            return False
-    return True
+            list1.remove(tag0)
+            list1.remove(tag1)
+            i = 0
+
+        print(list1)
+        
+
+
+    print(list1)
+    if (len(list1) != 0):
+        return False
+    else:
+        return True
+
+    
+
+    
+
+    
     
 
     # HINT:
