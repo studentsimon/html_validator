@@ -13,8 +13,9 @@ def validate_html(html):
 
     for i in list1:
         tag1 = "<" + "/" + i[1:]
+        print(i + tag1)
         if tag1 in list1:
-            list1.remove(i)
+            
             list1.remove(tag1)
         else:
             return False
